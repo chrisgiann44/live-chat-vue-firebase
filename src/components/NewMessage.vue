@@ -21,8 +21,6 @@ export default {
     },
     methods: {
         addMessage() {
-            console.log(this.newMessage, this.name);
-
             if (this.newMessage) {
                 db.collection("messages")
                     .add({
@@ -31,6 +29,7 @@ export default {
                         timestamp: Date.now()
                     })
                     .catch(err => console.log(err));
+                this.newMessage = null;
             } else {
                 this.feedback = "Please enter a message";
             }
